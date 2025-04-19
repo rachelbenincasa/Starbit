@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starbit - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff9fb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+      color: #5a3d5c;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      color: #ff6b8b;
+      font-family: 'Comfortaa', cursive;
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .header h1 .star {
+      color: #ffd166;
+      margin-left: 5px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #c8b6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background-color: #ffccd5;
+      color: #5a3d5c;
+      border: none;
+      border-radius: 12px;
+      padding: 8px 15px;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 6px rgba(255, 107, 139, 0.2);
+      margin-right: 10px;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff8fab;
+      color: white;
+    }
+
+    .logout-btn i {
+      margin-right: 5px;
+    }
+
+    /* Rest of your existing CSS remains the same */
+    .date-display {
+      color: #ff8fab;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(255, 138, 171, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      color: #ff6b8b;
+      font-size: 18px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #ff8fab;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 25px 0 15px 0;
+    }
+
+    .section-title h2 {
+      color: #ff6b8b;
+      font-family: 'Comfortaa', cursive;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .btn {
+      background-color: #ff6b8b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 8px 15px;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 6px rgba(255, 107, 139, 0.3);
+    }
+
+    .btn:hover {
+      background-color: #ff477e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(255, 107, 139, 0.4);
+    }
+
+    .btn i {
+      margin-right: 5px;
+    }
+
+    .habit-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(255, 138, 171, 0.1);
+      position: relative;
+    }
+
+    .habit-name {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #5a3d5c;
+    }
+
+    .habit-progress {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .progress-text {
+      font-size: 14px;
+      color: #ff8fab;
+      margin-right: 10px;
+      min-width: 50px;
+    }
+
+    .checkboxes {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #ffccd5;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .checkbox.checked {
+      background-color: #ff6b8b;
+      border-color: #ff6b8b;
+      color: white;
+    }
+
+    .checkbox:hover {
+      transform: scale(1.1);
+    }
+
+    .bits-container {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(255, 138, 171, 0.1);
+    }
+
+    .bits-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .bits-count {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ff6b8b;
+    }
+
+    .bits-label {
+      font-size: 14px;
+      color: #ff8fab;
+    }
+
+    .super-star {
+      color: #ff9e4f;
+      font-size: 24px;
+      margin-left: 5px;
+    }
+
+    .rewards-container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(255, 138, 171, 0.1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 20px;
+      color: #ff8fab;
+      font-size: 14px;
+    }
+
+    .reward-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px dashed #ffccd5;
+    }
+
+    .reward-item:last-child {
+      border-bottom: none;
+    }
+
+    .reward-info {
+      flex-grow: 1;
+    }
+
+    .reward-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .reward-desc {
+      font-size: 12px;
+      color: #ff8fab;
+    }
+
+    .reward-progress-container {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .reward-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reward-count {
+      min-width: 60px;
+      text-align: center;
+      font-weight: 600;
+      color: #ff6b8b;
+      font-size: 14px;
+    }
+
+    .bit-btn {
+      background-color: #c8b6ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .bit-btn:hover {
+      background-color: #b388ff;
+      transform: scale(1.1);
+    }
+
+    .bit-btn:disabled {
+      background-color: #e2e2e2;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .remove-bit {
+      background-color: #ffccd5;
+    }
+
+    .remove-bit:hover {
+      background-color: #ff8fab;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #ffccd5;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: #ff6b8b;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .completed-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #83c5be;
+      color: white;
+      border-radius: 10px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .completed-message {
+      color: #83c5be;
+      font-weight: 600;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .celebrate {
+      animation: bounce 0.5s ease infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-5px); }
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      box-sizing: border-box;
+    }
+
+    .modal-title {
+      color: #ff6b8b;
+      font-family: 'Comfortaa', cursive;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .modal-message {
+      margin-bottom: 20px;
+      color: #5a3d5c;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .modal-message ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    .modal-message li {
+      margin-bottom: 8px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .modal-btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-btn-primary {
+      background-color: #ff6b8b;
+      color: white;
+      border: none;
+    }
+
+    .modal-btn-primary:hover {
+      background-color: #ff477e;
+    }
+
+    .modal-btn-secondary {
+      background-color: white;
+      color: #ff6b8b;
+      border: 2px solid #ff6b8b;
+    }
+
+    .modal-btn-secondary:hover {
+      background-color: #fff9fb;
+    }
+
+    /* Input and counter styles */
+    .modal-input-container {
+      margin: 15px 0;
+      width: 100%;
+    }
+
+    .modal-input {
+      width: calc(100% - 24px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #ffccd5;
+      border-radius: 8px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .counter-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    .counter-btn {
+      background-color: #c8b6ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .counter-btn:hover {
+      background-color: #b388ff;
+    }
+
+    .counter-value {
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #5a3d5c;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    /* Add Reward Button */
+    .add-reward-btn {
+      margin-top: -5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="header">
+      <h1>Starbit <span class="star">⭐</span></h1>
+      <div class="user-info">
+        <button class="logout-btn" id="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <div class="user-icon">U</div>
+      </div>
+    </div>
+
+    <div class="date-display">
+      Today is <span id="current-date"></span>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-value" id="today-bits">0</div>
+        <div class="stat-label">Bits Today</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="streak-count">0</div>
+        <div class="stat-label">Day Streak</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="completion-rate">0%</div>
+        <div class="stat-label">Completion</div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Today's Habits</h2>
+      <button class="btn" id="add-habit-btn">
+        <i class="fas fa-plus"></i> New Habit
+      </button>
+    </div>
+
+    <div id="habits-container">
+      <div class="empty-state" id="no-habits-message">
+        No habits yet! Create your first habit with the "New Habit" button above.
+      </div>
+    </div>
+
+    <div class="bits-container">
+      <div class="bits-header">
+        <div>
+          <div class="bits-count" id="total-bits">0</div>
+          <div class="bits-label">Bits available to spend</div>
+        </div>
+        <div class="super-star">✪</div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Your Rewards</h2>
+      <button class="btn add-reward-btn" id="add-reward-btn">
+        <i class="fas fa-plus"></i> Add Reward
+      </button>
+    </div>
+
+    <div class="rewards-container" id="rewards-list">
+      <div class="empty-state" id="no-rewards-message">
+        No rewards yet! Create your first reward with the "Add Reward" button above.
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Modal -->
+  <div class="modal-overlay" id="welcome-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-title">Welcome to Starbit! 🌟</div>
+      <div class="modal-message">
+        <p>Starbit helps you build good habits and reward yourself for your progress. Here's how it works:</p>
+        <ul>
+          <li><strong>Add Habits:</strong> Click "New Habit" to create habits you want to track daily</li>
+          <li><strong>Set Frequency:</strong> Choose how many times per day you want to complete each habit</li>
+          <li><strong>Earn Bits:</strong> For each habit you fully complete in a day, you earn 1 Bit</li>
+          <li><strong>Create Rewards:</strong> Use your Bits to "purchase" rewards you've set for yourself</li>
+          <li><strong>Build Streaks:</strong> Complete all your habits daily to build a streak!</li>
+        </ul>
+        <p>Ready to start building better habits?</p>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-primary" id="welcome-ok-btn">Let's Go!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reward Completion Modal -->
+  <div class="modal-overlay" id="reward-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-title">Reward Achieved! 🎉</div>
+      <div class="modal-message" id="reward-message"></div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-secondary" id="restart-reward-btn">Restart Reward</button>
+        <button class="modal-btn modal-btn-primary" id="delete-reward-btn">Delete Reward</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Reward Modal -->
+  <div class="modal-overlay" id="add-reward-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-title">Add New Reward</div>
+      <div class="modal-input-container">
+        <input type="text" id="new-reward-name" class="modal-input" placeholder="Reward name">
+        <input type="number" id="new-reward-target" class="modal-input" placeholder="Target bits">
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-secondary" id="cancel-reward-btn">Cancel</button>
+        <button class="modal-btn modal-btn-primary" id="confirm-reward-btn">Add Reward</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Habit Modal -->
+  <div class="modal-overlay" id="add-habit-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-title">Add New Habit</div>
+      <div class="modal-input-container">
+        <input type="text" id="new-habit-name" class="modal-input" placeholder="Habit name">
+      </div>
+      <div class="counter-container">
+        <button class="counter-btn" id="decrease-frequency">
+          <i class="fas fa-minus"></i>
+        </button>
+        <div class="counter-value" id="habit-frequency">1</div>
+        <button class="counter-btn" id="increase-frequency">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-secondary" id="cancel-habit-btn">Cancel</button>
+        <button class="modal-btn modal-btn-primary" id="confirm-habit-btn">Add Habit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Track which reward was just completed
+    let completedReward = null;
+    let rewardCounter = 0;
+    let habitCounter = 0;
+    let currentUser = null;
+
+    // Initialize state
+    let state = {
+      bits: 0,
+      streak: 0,
+      lastUpdated: null,
+      rewards: {},
+      habits: {},
+      hasSeenWelcome: false
+    };
+
+    // Function to get auth token from localStorage
+    function getAuthToken() {
+      return localStorage.getItem('authToken');
+    }
+
+    // Function to fetch user data from server
+    async function fetchUserData() {
+      try {
+        const response = await fetch('/api/user-data', {
+          headers: {
+            'Authorization': `Bearer ${getAuthToken()}`
+          }
+        });
+
+        if (!response.ok) throw new Error('Failed to fetch user data');
+
+        const data = await response.json();
+
+        // Update local state with server data
+        state.bits = data.bits || 0;
+        state.streak = data.streak || 0;
+        state.lastUpdated = data.lastUpdated || null;
+        state.rewards = data.rewards || {};
+        state.habits = data.habits || {};
+
+        // Set counters based on existing items
+        rewardCounter = Object.keys(state.rewards).reduce((max, key) => {
+          const num = parseInt(key.split('-')[1]);
+          return Math.max(max, isNaN(num) ? 0 : num);
+        }, 0);
+
+        habitCounter = Object.keys(state.habits).reduce((max, key) => {
+          const num = parseInt(key.split('-')[1]);
+          return Math.max(max, isNaN(num) ? 0 : num);
+        }, 0);
+
+        // Initialize UI with the fetched data
+        initializeCheckboxes();
+        renderRewards();
+        updateUI();
+        checkStreakUpdate();
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    // Function to save data to server
+    async function saveData() {
+      try {
+        const response = await fetch('/api/save-data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getAuthToken()}`
+          },
+          body: JSON.stringify({
+            bits: state.bits,
+            streak: state.streak,
+            lastUpdated: state.lastUpdated,
+            habits: state.habits,
+            rewards: state.rewards
+          })
+        });
+
+        if (!response.ok) throw new Error('Failed to save data');
+
+        const result = await response.json();
+        console.log('Data saved:', result.message);
+      } catch (error) {
+        console.error('Error saving data:', error);
+      }
+    }
+
+    // Check if we need to update streak (run once per day)
+    function checkStreakUpdate() {
+      const today = new Date().toDateString();
+      const lastUpdated = state.lastUpdated ? new Date(state.lastUpdated).toDateString() : null;
+
+      // If we haven't updated today
+      if (lastUpdated !== today) {
+        // Check if all habits were completed yesterday
+        if (state.lastUpdated && isAllHabitsCompleted()) {
+          state.streak += 1;
+        } else if (!state.lastUpdated) {
+          // First time using the app
+          state.streak = 0;
+        } else {
+          // Broken streak
+          state.streak = 0;
+        }
+
+        // Reset all habit completions for the new day
+        resetDailyHabits();
+        state.lastUpdated = new Date().toISOString();
+        updateUI();
+        saveData();
+      }
+    }
+
+    // Check if all habits were completed
+    function isAllHabitsCompleted() {
+      return Object.values(state.habits).every(habit =>
+        habit.completed === habit.target
+      );
+    }
+
+    // Reset all habit completions for the new day
+    function resetDailyHabits() {
+      for (const habitId in state.habits) {
+        state.habits[habitId].completed = 0;
+        const habitCard = document.getElementById(habitId);
+        if (habitCard) {
+          habitCard.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.classList.remove('checked');
+            checkbox.innerHTML = '';
+          });
+          habitCard.querySelector('.progress-text').textContent = `0/${state.habits[habitId].target}`;
+          const completedMessage = habitCard.querySelector('.completed-message');
+          if (completedMessage) {
+            completedMessage.style.display = 'none';
+          }
+        }
+      }
+    }
+
+    // Update UI based on state
+    function updateUI() {
+      document.getElementById('total-bits').textContent = state.bits;
+      document.getElementById('streak-count').textContent = state.streak;
+
+      // Update reward counts and progress bars
+      for (const rewardType in state.rewards) {
+        updateRewardUI(rewardType);
+      }
+
+      // Update completion rate based on partial progress
+      updateCompletionRate();
+
+      // Update today's bits (completed habits)
+      const totalCompletedHabits = Object.values(state.habits).filter(habit =>
+        habit.completed === habit.target
+      ).length;
+      document.getElementById('today-bits').textContent = totalCompletedHabits;
+
+      // Show/hide empty state messages
+      document.getElementById('no-habits-message').style.display =
+        Object.keys(state.habits).length === 0 ? 'block' : 'none';
+      document.getElementById('no-rewards-message').style.display =
+        Object.keys(state.rewards).length === 0 ? 'block' : 'none';
+
+      // Disable/enable buttons appropriately
+      document.querySelectorAll('.add-bit').forEach(btn => {
+        btn.disabled = state.bits <= 0;
+      });
+
+      for (const rewardType in state.rewards) {
+        const removeBtn = document.getElementById(`${rewardType}-remove`);
+        if (removeBtn) {
+          removeBtn.disabled = state.rewards[rewardType].current <= 0;
+        }
+      }
+    }
+
+    function updateRewardUI(rewardType) {
+      const reward = state.rewards[rewardType];
+      const percentage = Math.min(100, (reward.current / reward.target) * 100);
+
+      if (document.getElementById(`${rewardType}-count`)) {
+        document.getElementById(`${rewardType}-count`).textContent =
+          `${reward.current}/${reward.target}`;
+        document.getElementById(`${rewardType}-progress`).style.width = `${percentage}%`;
+      }
+    }
+
+    // Handle both adding and removing bits
+    async function adjustBit(rewardType, change) {
+      const reward = state.rewards[rewardType];
+
+      if (change > 0 && state.bits > 0) {
+        // Adding a bit
+        reward.current += 1;
+        state.bits -= 1;
+
+        // Check if reward is completed
+        if (reward.current >= reward.target) {
+          completedReward = rewardType;
+          showRewardCompleteModal(rewardType);
+        }
+      } else if (change < 0 && reward.current > 0) {
+        // Removing a bit
+        reward.current -= 1;
+        state.bits += 1;
+      }
+
+      updateUI();
+      await saveData();
+
+      // Add celebration effect for adding bits
+      if (change > 0) {
+        const btn = document.getElementById(`${rewardType}-add`);
+        if (btn) {
+          btn.classList.add('celebrate');
+          setTimeout(() => btn.classList.remove('celebrate'), 500);
+        }
+      }
+    }
+
+    // Show reward completion modal
+    function showRewardCompleteModal(rewardType) {
+      const reward = state.rewards[rewardType];
+      document.getElementById('reward-message').textContent =
+        `You've earned the ${reward.name} reward!`;
+      document.getElementById('reward-modal').style.display = 'flex';
+    }
+
+    // Restart the completed reward
+    async function restartReward() {
+      if (completedReward) {
+        state.rewards[completedReward].current = 0;
+        updateUI();
+        await saveData();
+      }
+      document.getElementById('reward-modal').style.display = 'none';
+    }
+
+    // Delete the completed reward
+    async function deleteReward() {
+      if (completedReward) {
+        // Remove from state
+        delete state.rewards[completedReward];
+
+        // Remove from DOM
+        const rewardElement = document.querySelector(`[data-reward="${completedReward}"]`);
+        if (rewardElement) {
+          rewardElement.remove();
+        }
+      }
+      document.getElementById('reward-modal').style.display = 'none';
+      updateUI();
+      await saveData();
+    }
+
+    // Show welcome modal
+    async function showWelcomeModal() {
+      if (!state.hasSeenWelcome) {
+        document.getElementById('welcome-modal').style.display = 'flex';
+        state.hasSeenWelcome = true;
+        await saveData();
+      }
+    }
+
+    // Show add reward modal
+    function showAddRewardModal() {
+      document.getElementById('add-reward-modal').style.display = 'flex';
+      document.getElementById('new-reward-name').value = '';
+      document.getElementById('new-reward-target').value = '';
+    }
+
+    // Create new reward
+    async function createNewReward() {
+      const name = document.getElementById('new-reward-name').value.trim();
+      const target = parseInt(document.getElementById('new-reward-target').value);
+
+      if (name && target > 0) {
+        rewardCounter++;
+        const rewardId = `reward-${rewardCounter}`;
+
+        // Add to state
+        state.rewards[rewardId] = {
+          name: name,
+          target: target,
+          current: 0
+        };
+
+        // Add to DOM
+        renderReward(rewardId);
+
+        document.getElementById('add-reward-modal').style.display = 'none';
+        updateUI();
+        await saveData();
+      }
+    }
+
+    // Function to render a single reward
+    function renderReward(rewardId) {
+      const reward = state.rewards[rewardId];
+      const rewardsContainer = document.getElementById('rewards-list');
+
+      const newReward = document.createElement('div');
+      newReward.className = 'reward-item';
+      newReward.dataset.reward = rewardId;
+      newReward.innerHTML = `
+        <div class="reward-info">
+          <div class="reward-name">${reward.name}</div>
+          <div class="reward-progress-container">
+            <div class="reward-count" id="${rewardId}-count">${reward.current}/${reward.target}</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="${rewardId}-progress" style="width: ${Math.min(100, (reward.current / reward.target) * 100)}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="reward-controls">
+          <button class="bit-btn remove-bit" id="${rewardId}-remove">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button class="bit-btn add-bit" id="${rewardId}-add">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      `;
+      rewardsContainer.appendChild(newReward);
+
+      // Add event listeners
+      document.getElementById(`${rewardId}-remove`).onclick = () => adjustBit(rewardId, -1);
+      document.getElementById(`${rewardId}-add`).onclick = () => adjustBit(rewardId, 1);
+    }
+
+    // Function to render all rewards
+    function renderRewards() {
+      const rewardsContainer = document.getElementById('rewards-list');
+      rewardsContainer.innerHTML = ''; // Clear existing
+
+      if (Object.keys(state.rewards).length === 0) {
+        document.getElementById('no-rewards-message').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('no-rewards-message').style.display = 'none';
+
+      for (const rewardId in state.rewards) {
+        renderReward(rewardId);
+      }
+    }
+
+    // Show add habit modal
+    function showAddHabitModal() {
+      document.getElementById('add-habit-modal').style.display = 'flex';
+      document.getElementById('new-habit-name').value = '';
+      document.getElementById('habit-frequency').textContent = '1';
+    }
+
+    // Change habit frequency
+    function changeHabitFrequency(change) {
+      const current = parseInt(document.getElementById('habit-frequency').textContent);
+      const newValue = Math.max(1, current + change);
+      document.getElementById('habit-frequency').textContent = newValue;
+    }
+
+    // Create new habit
+    async function createNewHabit() {
+      const name = document.getElementById('new-habit-name').value.trim();
+      const frequency = parseInt(document.getElementById('habit-frequency').textContent);
+
+      if (name) {
+        habitCounter++;
+        const habitId = `habit-${habitCounter}`;
+
+        // Add to state
+        state.habits[habitId] = {
+          name: name,
+          target: frequency,
+          completed: 0
+        };
+
+        // Add to DOM
+        const habitsContainer = document.getElementById('habits-container');
+
+        const newHabit = document.createElement('div');
+        newHabit.className = 'habit-card';
+        newHabit.id = habitId;
+
+        let checkboxes = '';
+        for (let i = 0; i < frequency; i++) {
+          checkboxes += '<div class="checkbox"></div>';
+        }
+
+        newHabit.innerHTML = `
+          <div class="habit-name">${name}</div>
+          <div class="habit-progress">
+            <span class="progress-text">0/${frequency}</span>
+            <div class="checkboxes">
+              ${checkboxes}
+            </div>
+          </div>
+          <div class="completed-message" style="display: none;">You did it! +1 bit</div>
+        `;
+
+        habitsContainer.appendChild(newHabit);
+
+        // Add event listeners to new checkboxes
+        newHabit.querySelectorAll('.checkbox').forEach(checkbox => {
+          checkbox.addEventListener('click', async function() {
+            const habitCard = this.closest('.habit-card');
+            const habitId = habitCard.id;
+            const checkboxes = habitCard.querySelectorAll('.checkbox');
+            const checkedBoxes = habitCard.querySelectorAll('.checkbox.checked');
+            const completedMessage = habitCard.querySelector('.completed-message');
+
+            if (this.classList.contains('checked')) {
+              this.classList.remove('checked');
+              this.innerHTML = '';
+              state.habits[habitId].completed -= 1;
+
+              // If we were at full completion, remove the bit
+              if (state.habits[habitId].completed === state.habits[habitId].target - 1) {
+                state.bits -= 1;
+              }
+            } else {
+              this.classList.add('checked');
+              this.innerHTML = '<i class="fas fa-check"></i>';
+              state.habits[habitId].completed += 1;
+
+              // Check if we just completed the habit
+              if (state.habits[habitId].completed === state.habits[habitId].target) {
+                state.bits += 1;
+                completedMessage.style.display = 'block';
+
+                const badge = document.createElement('div');
+                badge.className = 'completed-badge';
+                badge.textContent = '+1 bit';
+                habitCard.append(badge);
+                setTimeout(() => badge.remove(), 1000);
+              }
+            }
+
+            const progressText = habitCard.querySelector('.progress-text');
+            progressText.textContent = `${state.habits[habitId].completed}/${state.habits[habitId].target}`;
+
+            // Hide completed message if not fully completed
+            if (state.habits[habitId].completed < state.habits[habitId].target) {
+              completedMessage.style.display = 'none';
+            }
+
+            updateCompletionRate();
+            updateUI();
+            await saveData();
+          });
+        });
+
+        document.getElementById('add-habit-modal').style.display = 'none';
+        updateCompletionRate();
+        updateUI();
+        await saveData();
+      }
+    }
+
+    // Calculate completion rate with equal weight per habit
+    function updateCompletionRate() {
+      const habitCount = Object.keys(state.habits).length;
+      if (habitCount === 0) {
+        document.getElementById('completion-rate').textContent = '0%';
+        return;
+      }
+
+      let totalCompletion = 0;
+
+      Object.values(state.habits).forEach(habit => {
+        // Each habit contributes equally (1/habitCount of total)
+        const habitCompletion = habit.completed / habit.target;
+        totalCompletion += habitCompletion / habitCount;
+      });
+
+      const completionRate = Math.round(totalCompletion * 100);
+      document.getElementById('completion-rate').textContent = `${completionRate}%`;
+    }
+
+    // Initialize checkboxes based on state
+    function initializeCheckboxes() {
+      Object.keys(state.habits).forEach(habitId => {
+        const habitCard = document.getElementById(habitId);
+        if (habitCard) {
+          const checkboxes = habitCard.querySelectorAll('.checkbox');
+          const completedMessage = habitCard.querySelector('.completed-message');
+
+          for (let i = 0; i < state.habits[habitId].completed; i++) {
+            checkboxes[i].classList.add('checked');
+            checkboxes[i].innerHTML = '<i class="fas fa-check"></i>';
+          }
+
+          if (state.habits[habitId].completed === state.habits[habitId].target) {
+            completedMessage.style.display = 'block';
+          }
+        }
+      });
+    }
+
+    // Set up event listeners
+    function setupEventListeners() {
+      // Welcome modal button
+      document.getElementById('welcome-ok-btn').onclick = () => {
+        document.getElementById('welcome-modal').style.display = 'none';
+      };
+
+      // Reward modal buttons
+      document.getElementById('restart-reward-btn').onclick = restartReward;
+      document.getElementById('delete-reward-btn').onclick = deleteReward;
+
+      // Add reward buttons
+      document.getElementById('add-reward-btn').onclick = showAddRewardModal;
+      document.getElementById('cancel-reward-btn').onclick = () => {
+        document.getElementById('add-reward-modal').style.display = 'none';
+      };
+      document.getElementById('confirm-reward-btn').onclick = createNewReward;
+
+      // Add habit buttons
+      document.getElementById('add-habit-btn').onclick = showAddHabitModal;
+      document.getElementById('cancel-habit-btn').onclick = () => {
+        document.getElementById('add-habit-modal').style.display = 'none';
+      };
+      document.getElementById('confirm-habit-btn').onclick = createNewHabit;
+
+      // Frequency counter
+      document.getElementById('decrease-frequency').onclick = () => changeHabitFrequency(-1);
+      document.getElementById('increase-frequency').onclick = () => changeHabitFrequency(1);
+
+      // Logout button
+      document.getElementById('logout-btn').onclick = () => {
+        localStorage.removeItem('authToken');
+        window.location.href = '/login.html';
+      };
+    }
+
+    // Initialize the page when loaded
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Set current date
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', options);
+
+      // Check if user is logged in
+      const token = getAuthToken();
+      if (!token) {
+        // Redirect to login if no token
+        window.location.href = '/login.html';
+        return;
+      }
+
+      try {
+        // Fetch user data from server
+        await fetchUserData();
+
+        // Show welcome modal if first time
+        if (!state.hasSeenWelcome) {
+          setTimeout(showWelcomeModal, 500);
+          state.hasSeenWelcome = true;
+          await saveData();
+        }
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+
+      setupEventListeners();
+    });
+  </script>
+</body>
+</html>

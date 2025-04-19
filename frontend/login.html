@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starbit - Login</title>
+  <!-- Import cute minimalist font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff9fb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .login-form {
+      background-color: #fff;
+      border: 1px solid #ffebee;
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 8px 20px rgba(255, 138, 171, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff6b8b;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 600;
+    }
+
+    .welcome-message {
+      margin-bottom: 30px;
+    }
+
+    .welcome-message h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ff6b8b;
+    }
+
+    .welcome-message p {
+      font-size: 16px;
+      color: #ff8fab;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ff8fab;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      box-sizing: border-box;
+      width: calc(100% - 4px);
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 2px solid #ffccd5;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Quicksand', sans-serif;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #ff6b8b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2);
+    }
+
+    .submit-btn {
+      background-color: #ff6b8b;
+      color: white;
+      font-weight: 600;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s;
+      font-family: 'Comfortaa', cursive;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(255, 107, 139, 0.3);
+    }
+
+    .submit-btn:hover {
+      background-color: #ff477e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 107, 139, 0.4);
+    }
+
+    .signup-link {
+      margin-top: 20px;
+      color: #ff8fab;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #ff6b8b;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .signup-link a:hover {
+      color: #ff477e;
+      text-decoration: underline;
+    }
+
+    /* Forgot password section */
+    .forgot-password {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed #ffccd5;
+    }
+
+    .forgot-password-toggle {
+      color: #ff6b8b;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .forgot-password-toggle:hover {
+      color: #ff477e;
+      text-decoration: underline;
+    }
+
+    .forgot-password-form {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .forgot-password-form.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Star decoration */
+    .star {
+      color: #ffd166;
+      font-size: 24px;
+      margin: 0 2px;
+    }
+
+    /* Error message styling */
+    .error-message {
+      color: #ff6b8b;
+      background-color: #ffebee;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="welcome-message">
+      <h2>Welcome back to Starbit <span class="star">⭐</span></h2>
+      <p>Continue your habit journey with us</p>
+    </div>
+    <form class="login-form" id="loginForm">
+      <h2>Login to Your Account</h2>
+
+      <div id="errorMessage" class="error-message"></div>
+
+      <label for="username">Username or Email</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit" class="submit-btn">Log In</button>
+
+      <div class="signup-link">
+        Don't have an account? <a href="signup.html">Sign up here</a>
+      </div>
+
+      <div class="forgot-password">
+        <a class="forgot-password-toggle" id="forgotPasswordToggle">Forgot your password?</a>
+
+        <div class="forgot-password-form" id="forgotPasswordForm">
+          <label for="recovery-email">Enter your email address</label>
+          <input type="email" id="recovery-email" name="recovery-email" placeholder="your@email.com" />
+
+          <button type="button" class="submit-btn" id="sendRecoveryBtn">Send Recovery Code</button>
+
+          <div id="codeSection" style="display: none;">
+            <label for="recovery-code">Enter the 6-digit code</label>
+            <input type="text" id="recovery-code" name="recovery-code" placeholder="123456" maxlength="6" />
+
+            <button type="button" class="submit-btn" id="verifyCodeBtn">Verify Code</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // DOM elements
+    const loginForm = document.getElementById('loginForm');
+    const forgotPasswordToggle = document.getElementById('forgotPasswordToggle');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const sendRecoveryBtn = document.getElementById('sendRecoveryBtn');
+    const codeSection = document.getElementById('codeSection');
+    const errorMessage = document.getElementById('errorMessage');
+
+    // Toggle forgot password form
+    forgotPasswordToggle.addEventListener('click', function() {
+      forgotPasswordForm.classList.toggle('active');
+    });
+
+    // Handle login form submission
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Clear previous errors
+      errorMessage.style.display = 'none';
+
+      try {
+        // Show loading state
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Logging in...';
+        submitBtn.disabled = true;
+
+        const response = await fetch('http://localhost:3001/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Save token and user data to localStorage
+          localStorage.setItem('starbit_token', data.token);
+          localStorage.setItem('starbit_user', JSON.stringify(data.user));
+
+          // Redirect to home page
+          window.location.href = 'homepage.html';
+        } else {
+          // Show error message
+          errorMessage.textContent = data.error || 'Login failed. Please try again.';
+          errorMessage.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        errorMessage.textContent = 'An error occurred during login. Please try again.';
+        errorMessage.style.display = 'block';
+      } finally {
+        // Restore button state
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Simulate password recovery (to be implemented properly later)
+    sendRecoveryBtn.addEventListener('click', function() {
+      const email = document.getElementById('recovery-email').value;
+      if (email) {
+        alert(`A 6-digit recovery code has been sent to ${email} (simulated)`);
+        codeSection.style.display = 'block';
+      } else {
+        alert('Please enter your email address');
+      }
+    });
+
+    // Simulate code verification (to be implemented properly later)
+    document.getElementById('verifyCodeBtn').addEventListener('click', function() {
+      alert('Code verified! You can now reset your password');
+    });
+  </script>
+</body>
+</html>

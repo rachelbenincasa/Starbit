@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starbit - Sign Up</title>
+  <!-- Import cute minimalist font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff9fb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .signup-container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .signup-form {
+      background-color: #fff;
+      border: 1px solid #ffebee;
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 8px 20px rgba(255, 138, 171, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff6b8b;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 600;
+    }
+
+    .welcome-message {
+      margin-bottom: 30px;
+    }
+
+    .welcome-message h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ff6b8b;
+    }
+
+    .welcome-message p {
+      font-size: 16px;
+      color: #ff8fab;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ff8fab;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      box-sizing: border-box;
+      width: calc(100% - 4px);
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 2px solid #ffccd5;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Quicksand', sans-serif;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #ff6b8b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2);
+    }
+
+    .note {
+      font-size: 12px;
+      color: #ffb3c6;
+      margin-top: -12px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .color-option {
+      width: 40px;
+      height: 40px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .color-option.selected {
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px #ff6b8b;
+      transform: scale(1.1);
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + .color-option {
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px #ff6b8b;
+    }
+
+    .submit-btn {
+      background-color: #ff6b8b;
+      color: white;
+      font-weight: 600;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s;
+      font-family: 'Comfortaa', cursive;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(255, 107, 139, 0.3);
+    }
+
+    .submit-btn:hover {
+      background-color: #ff477e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 107, 139, 0.4);
+    }
+
+    .login-link {
+      margin-top: 20px;
+      color: #ff8fab;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #ff6b8b;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .login-link a:hover {
+      color: #ff477e;
+      text-decoration: underline;
+    }
+
+    /* Star decoration */
+    .star {
+      color: #ffd166;
+      font-size: 24px;
+      margin: 0 2px;
+    }
+
+    /* Error message styling */
+    .error-message {
+      color: #ff6b8b;
+      background-color: #ffebee;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="welcome-message">
+      <h2>Welcome to Starbit <span class="star">⭐</span></h2>
+      <p>Build habits. Earn stars. Stay consistent.</p>
+    </div>
+    <form class="signup-form" id="signupForm">
+      <h2>Create Your Account</h2>
+
+      <div id="errorMessage" class="error-message"></div>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+      <p class="note">Must be at least 8 characters and include a number.</p>
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required />
+
+      <label>Choose Your Color</label>
+      <div class="color-options">
+        <input type="radio" id="color-red" name="favorite-color" value="red" required />
+        <label for="color-red" class="color-option" style="background-color: #ff6b6b;"></label>
+
+        <input type="radio" id="color-orange" name="favorite-color" value="orange" />
+        <label for="color-orange" class="color-option" style="background-color: #ff9e4f;"></label>
+
+        <input type="radio" id="color-yellow" name="favorite-color" value="yellow" />
+        <label for="color-yellow" class="color-option" style="background-color: #ffd166;"></label>
+
+        <input type="radio" id="color-green" name="favorite-color" value="green" />
+        <label for="color-green" class="color-option" style="background-color: #83c5be;"></label>
+
+        <input type="radio" id="color-blue" name="favorite-color" value="blue" />
+        <label for="color-blue" class="color-option" style="background-color: #6a8dff;"></label>
+
+        <input type="radio" id="color-indigo" name="favorite-color" value="indigo" />
+        <label for="color-indigo" class="color-option" style="background-color: #9381ff;"></label>
+
+        <input type="radio" id="color-purple" name="favorite-color" value="purple" />
+        <label for="color-purple" class="color-option" style="background-color: #b388ff;"></label>
+
+        <input type="radio" id="color-pink" name="favorite-color" value="pink" />
+        <label for="color-pink" class="color-option" style="background-color: #ff85a2;"></label>
+
+        <input type="radio" id="color-teal" name="favorite-color" value="teal" />
+        <label for="color-teal" class="color-option" style="background-color: #84dcc6;"></label>
+
+        <input type="radio" id="color-lavender" name="favorite-color" value="lavender" />
+        <label for="color-lavender" class="color-option" style="background-color: #c8b6ff;"></label>
+      </div>
+
+      <button type="submit" class="submit-btn">Sign Up</button>
+
+      <div class="login-link">
+        Already have an account? <a href="login.html">Log in here</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const color = document.querySelector('input[name="favorite-color"]:checked')?.value;
+
+      // Get error message element
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Clear previous errors
+      errorMessage.style.display = 'none';
+
+      // Basic client-side validation
+      if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords do not match';
+        errorMessage.style.display = 'block';
+        return;
+      }
+
+      if (password.length < 8 || !/\d/.test(password)) {
+        errorMessage.textContent = 'Password must be at least 8 characters and include a number';
+        errorMessage.style.display = 'block';
+        return;
+      }
+
+      if (!color) {
+        errorMessage.textContent = 'Please select a color';
+        errorMessage.style.display = 'block';
+        return;
+      }
+
+      try {
+        // Show loading state
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Creating account...';
+        submitBtn.disabled = true;
+
+        // Send signup request to server
+        const response = await fetch('http://localhost:3001/api/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, email, password, color }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Save token and user data to localStorage
+          localStorage.setItem('starbit_token', data.token);
+          localStorage.setItem('starbit_user', JSON.stringify(data.user));
+
+          // Redirect to home page
+          window.location.href = 'homepage.html';
+        } else {
+          // Show error message from server
+          errorMessage.textContent = data.error || 'Signup failed. Please try again.';
+          errorMessage.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        errorMessage.textContent = 'An error occurred during signup. Please try again.';
+        errorMessage.style.display = 'block';
+      } finally {
+        // Restore button state
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.textContent = 'Sign Up';
+          submitBtn.disabled = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
